@@ -9,6 +9,33 @@ interface IScheduleItem {
 }
 
 export default class ClassesController {
+  public async index(request: Request, response: Response): Promise<Response> {
+    const filters = request.query;
+
+    const week_day = filters.week_day as string;
+    const subject = filters.subject as string;
+    const time = filters.time as string;
+
+    if (!week_day || !subject || !time) {
+      return response.status(400).json({
+        message: 'Missing filters to search classes',
+      });
+    }
+
+    const timeInMinutes = convertHourToMinutes(time);
+
+    const classes = await db('classes')
+      .select(['classes.*', 'users.*', 'class_schedule.*'])
+      .innerJoin('class_schedule', 'classes.id', 'class_schedule.class_id')
+      .innerJoin('users', 'classes.user_id', 'users.id')
+      .where('classes.subject', 'like', subject)
+      .where('class_schedule.week_day', '=', week_day)
+      .where('class_schedule.from', '<=', timeInMinutes)
+      .where('class_schedule.to', '>=', timeInMinutes);
+
+    return response.json(classes);
+  }
+
   public async create(request: Request, response: Response): Promise<Response> {
     const {
       name,
