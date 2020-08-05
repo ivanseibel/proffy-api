@@ -1,5 +1,5 @@
 Arguments: 
-  /home/ivan/.nvm/versions/node/v12.18.3/bin/node /usr/share/yarn/bin/yarn.js add sqlite -D
+  /home/ivan/.nvm/versions/node/v12.18.3/bin/node /usr/share/yarn/bin/yarn.js add cors
 
 PATH: 
   /home/ivan/.nvm/versions/node/v12.18.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ivan/.yarn/bin:/home/ivan/.yarn/bin
@@ -38,6 +38,7 @@ npm manifest:
       "eslint-plugin-import": "^2.21.2",
       "eslint-plugin-prettier": "^3.1.4",
       "prettier": "^2.0.5",
+      "sqlite": "^4.0.12",
       "ts-node-dev": "^1.0.0-pre.56",
       "typescript": "^3.9.7"
     },
@@ -3280,6 +3281,11 @@ Lockfile:
       node-pre-gyp "^0.11.0"
     optionalDependencies:
       node-gyp "3.x"
+  
+  sqlite@^4.0.12:
+    version "4.0.12"
+    resolved "https://registry.yarnpkg.com/sqlite/-/sqlite-4.0.12.tgz#f61d47d3b551821b609c65c5eba35b3ed6d94de0"
+    integrity sha512-ZY9rvFrNH+iHS0FNgUgGd6dlj0Gji9hKqwpG8XI+/2djrxUiQj5aS7j3mY0AKhM2jXtJ9UTjrLnwvfUMTAE2/A==
   
   sshpk@^1.7.0:
     version "1.16.1"
