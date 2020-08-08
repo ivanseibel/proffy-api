@@ -28,7 +28,7 @@ export default class ClassesController {
       .select(['classes.*', 'users.*', 'class_schedule.*'])
       .innerJoin('class_schedule', 'classes.id', 'class_schedule.class_id')
       .innerJoin('users', 'classes.user_id', 'users.id')
-      .where('classes.subject', 'like', subject)
+      .where('classes.subject', 'like', `%${subject}%`)
       .where('class_schedule.week_day', '=', week_day)
       .where('class_schedule.from', '<=', timeInMinutes)
       .where('class_schedule.to', '>=', timeInMinutes);
